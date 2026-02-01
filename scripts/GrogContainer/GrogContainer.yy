@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GrogContainer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GrogContainer",
+  "parent":{
+    "name":"Containers",
+    "path":"folders/GrogUI/Containers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

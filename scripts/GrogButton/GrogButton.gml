@@ -1,0 +1,3 @@
+function GrogButton() : GrogElement() constructor {
+
+}

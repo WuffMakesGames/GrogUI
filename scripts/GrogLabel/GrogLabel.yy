@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GrogLabel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GrogLabel",
+  "parent":{
+    "name":"Elements",
+    "path":"folders/GrogUI/Elements.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
