@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GrogListContainer",
+  "%Name":"GrogHorizontalListContainer",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GrogListContainer",
+  "name":"GrogHorizontalListContainer",
   "parent":{
     "name":"Containers",
     "path":"folders/GrogUI/Containers.yy",

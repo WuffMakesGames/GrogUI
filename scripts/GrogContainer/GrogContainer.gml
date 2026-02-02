@@ -1,13 +1,40 @@
 function GrogContainer() : GrogElement() constructor {
-	
 	children = [];
+	trim_contents = false;
+	
+	// Overrides
+	update_children = function() {
+		for (var i = 0; i < array_length(children); i++) {
+			var _child = children[i];
+			_child.update_size(width, height);
+			_child.update_position(x, y, width, height);
+			_child.update();
+		}
+	}
+	render_children = function() {
+		for (var i = 0; i < array_length(children); i++) {
+			children[i].render();
+		}
+	}
+	
+	// Override
+	update = function() { update_children(); }
+	render = function() {
+		render_children();
+		if (GROG_DEBUG) {
+			draw_set_color(c_red);
+			draw_rectangle(x+1, y+1, x+width-1, y+height-1, true);
+			draw_text(x+width-string_width(instanceof(self)), y+height-string_height(instanceof(self)), instanceof(self));
+			draw_set_color(c_white);
+		}
+	}
 	
 	// =============================================
 	#region Methods
 	
 	/// Deletes all children of the container.
 	static clear = function() {
-		while (array_length(children) > 0) remove_element(children[0]);
+		while (array_length(children) > 0) children[0].free();
 	}
 	
 	/// Adds a gui element to the container.
@@ -43,19 +70,21 @@ function GrogContainer() : GrogElement() constructor {
 	#region Elements - Containers
 	
 	/// Adds an empty container.
+	/// @return {struct.GrogContainer}
 	static add_container = function() {
 		return add_element(new GrogContainer())
 	}
 	
 	/// Adds a container that sorts its childrens as a grid.
-	/// @arg {real} cells_x
-	/// @arg {real} cells_y
-	static add_grid_container = function(_cells_x, _cells_y) {
-		return add_element(new GrogGridContainer(_cells_x, _cells_y))
+	/// @arg {real} columns
+	/// @return {struct.GrogContainer}
+	static add_grid_container = function(_columns) {
+		return add_element(new GrogGridContainer(_columns))
 	}
 	
 	/// Adds a container that can be scrolled horizontally and vertically.
 	/// Only works when it has one child.
+	/// @return {struct.GrogContainer}
 	static add_scroll_container = function() {
 		return add_element(new GrogScrollContainer())
 	}
@@ -63,13 +92,16 @@ function GrogContainer() : GrogElement() constructor {
 	/// Adds a container that sorts its childrens vertically or horizontally.
 	/// The direction can be configured. (i.e. Left to right / Right to left)
 	/// @arg {real} direction
+	/// @return {struct.GrogContainer}
 	static add_list_container = function(_direction) {
-		return add_element(new GrogListContainer(_direction))
+		var _element = _direction == GROG_HORIZONTAL ? new GrogHorizontalListContainer() : new GrogVerticalListContainer()
+		return add_element(_element);
 	}
 	
 	/// Uses a sprite as its background.
 	/// Best when using a nine-slice enabled sprite.
 	/// @arg {asset.GMSprite} sprite
+	/// @return {struct.GrogContainer}
 	static add_panel_container = function(_sprite) {
 		return add_element(new GrogPanelContainer(_sprite))
 	}
@@ -77,6 +109,11 @@ function GrogContainer() : GrogElement() constructor {
 	#endregion
 	// =============================================
 	#region Elements - Others
+	
+	/// Adds an empty element that can be used for spacing.
+	static add_spacing = function(_width, _height) {
+		return add_element(new GrogSpacing(_width, _height));
+	}
 	
 	/// Adds a clickable button.
 	static add_button = function() {
@@ -91,4 +128,5 @@ function GrogContainer() : GrogElement() constructor {
 	
 	#endregion
 	// =============================================
+	
 }
