@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"grogui_debug_font",
+  "%Name":"__grogui_debug_font",
   "AntiAlias":1,
   "applyKerning":0,
   "ascender":14,
@@ -189,7 +189,7 @@
   "last":0,
   "lineHeight":18,
   "maintainGms1Font":false,
-  "name":"grogui_debug_font",
+  "name":"__grogui_debug_font",
   "parent":{
     "name":"GrogUI",
     "path":"folders/GrogUI.yy",

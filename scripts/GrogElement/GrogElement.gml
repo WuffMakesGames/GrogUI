@@ -7,6 +7,9 @@ function GrogElement() constructor {
 	width = 0;
 	height = 0;
 	
+	// Style
+	font = -1;
+	
 	// Flags
 	min_width = 0;
 	min_height = 0;
@@ -19,7 +22,7 @@ function GrogElement() constructor {
 	
 	debug_render = function() {
 		if (GROG_DEBUG_BOUNDS) {
-			draw_set_font(grogui_debug_font);
+			draw_set_font(__grogui_debug_font);
 			draw_set_color(c_red);
 			draw_rectangle(x+1, y+1, x+width-1, y+height-1, true);
 			draw_set_color(c_white);
@@ -59,5 +62,31 @@ function GrogElement() constructor {
 	
 	#endregion
 	// =============================================
+	#region Getters/Setters
 	
+	/// @return {Struct.GrogElement}
+	static __setter = function(_name, _value) {
+		struct_set(self, _name, _value);
+		return self;
+	}
+	
+	/// Sets the font the element uses for rendering text
+	static set_font = function(_font) { return __setter("font", _font); }
+	static get_font = function() { return font; }
+	
+	/// Sets the flags for how the element will fill a container.
+	/// Multiple flags can be combined using the OR operator. (i.e. GROG_EXPAND_FILL_X | GROG_EXPAND_Y)
+	static set_expand_flags = function(_flags) { return __setter("expand", _flags); }
+	static get_expand_flags = function() { return expand; }
+	
+	/// Sets the minimum width and height for the element.
+	/// @return {Struct.GrogElement}
+	static set_minimum_size = function(_width, _height) {
+		min_width = _width;
+		min_height = _height;
+		return self;
+	}
+	
+	#endregion
+	// =============================================
 }

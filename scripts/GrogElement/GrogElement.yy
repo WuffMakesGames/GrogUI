@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GrogElement",
   "parent":{
-    "name":"GrogUI",
-    "path":"folders/GrogUI.yy",
+    "name":"Base",
+    "path":"folders/GrogUI/Base.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

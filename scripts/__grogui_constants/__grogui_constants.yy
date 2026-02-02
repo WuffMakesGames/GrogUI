@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"grogui_constants",
+  "%Name":"__grogui_constants",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"grogui_constants",
+  "name":"__grogui_constants",
   "parent":{
     "name":"GrogUI",
     "path":"folders/GrogUI.yy",

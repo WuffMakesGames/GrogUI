@@ -28,54 +28,55 @@ for (var i = 0; i < array_length(_names); i++) {
 // ==============================================
 #region Menus
 open_ability_menu = function() {
+	GrogUI.set_default_font(grogdemo_font_large);
 	root.clear();
 	
 	// Main list
 	var list = root.add_list_container(GROG_VERTICAL);
 	list.expand = GROG_EXPAND_FILL_BOTH;
 	list.item_padding = 10;
+	
+	// =============================================
+	#region Main Body
 	{
-		// Content
 		var body = list.add_list_container(GROG_VERTICAL);
-		body.min_width = 1050;
-		body.expand = GROG_EXPAND_X | GROG_EXPAND_FILL_Y;
-		body.item_padding = 10;
+		body.set_minimum_size(1050, 0);
+		body.set_expand_flags(GROG_EXPAND_X : GROG_EXPAND_FILL_Y);
+		body.set_item_padding(10);
 		
 		// Spacing
 		body.add_spacing(0, 10);
 		
 		// Header
 		var header = body.add_container();
-		header.min_height = 75;
-		header.expand = GROG_EXPAND_FILL_X;
+		header.set_minimum_size(0, 75);
+		header.set_expand_flags(GROG_EXPAND_FILL_X);
 		{
 			var panel = header.add_panel_container(grogdemo_panel_round);
-			panel.min_width = 300;
-			panel.expand = GROG_EXPAND_FILL_Y;
+			panel.set_minimum_size(300, 0);
+			panel.set_expand_flags(GROG_EXPAND_FILL_Y);
 			
-			var label = panel.add_label("Ability", grogdemo_font_large);
-			label.expand = GROG_EXPAND_BOTH;
+			// Label
+			panel.add_label("Ability").set_expand_flags(GROG_EXPAND_BOTH);
 		}
 		
 		// Subheader
 		var subheader = body.add_list_container(GROG_HORIZONTAL);
-		subheader.item_padding = 10;
-		subheader.min_height = 150;
-		subheader.expand = GROG_EXPAND_FILL_X;
+		subheader.set_minimum_size(0, 150);
+		subheader.set_expand_flags(GROG_EXPAND_FILL_X);
+		subheader.set_item_padding(10);
 		{
 			// Player
-			var panel = subheader.add_panel_container(grogdemo_panel_fancy);
-			panel.expand = GROG_EXPAND_FILL_BOTH;
+			var panel = subheader.add_panel_container(grogdemo_panel_fancy)
+				.set_expand_flags(GROG_EXPAND_FILL_BOTH);
 			
-			var panel_list = panel.add_list_container(GROG_HORIZONTAL);
-			panel_list.expand = GROG_EXPAND_FILL_BOTH;
+			var panel_list = panel.add_list_container(GROG_HORIZONTAL)
+				.set_expand_flags(GROG_EXPAND_FILL_BOTH);
 			panel_list.add_spacing(38, 0);
 			
-			var portrait = panel_list.add_panel_container(grogdemo_portrait);
-			portrait.min_width = 96;
-			portrait.min_height = 130;
-			portrait.expand = GROG_EXPAND_Y;
-			
+			var portrait = panel_list.add_panel_container(grogdemo_portrait)
+				.set_minimum_size(96, 130)
+				.set_expand_flags(GROG_EXPAND_Y);
 		}
 		{
 			// Info
@@ -85,30 +86,46 @@ open_ability_menu = function() {
 		}
 		
 		// Abilities
-		var ability_container = body.add_scroll_container();
-		ability_container.expand = GROG_EXPAND_FILL_BOTH;
-		{
-			var _cells_y = ceil(array_length(abilities) / 2);
-			var _cell_height = 40;
-			
-			var grid = ability_container.add_grid_container(2, _cells_y);
-			grid.min_height = _cells_y * _cell_height;
-			grid.expand = GROG_EXPAND_FILL_BOTH;
-			
-			// Grid items
-			for (var i = 0; i < array_length(abilities); i++) {
-				var ability = grid.add_element(new AbilityButton(abilities[i]));
-				ability.min_height = _cell_height;
-				ability.expand = GROG_EXPAND_FILL_BOTH;
+		var ability_container = body.add_scroll_container()
+			.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+			{
+				var grid = ability_container.add_grid_container(2)
+					.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+				
+				// Grid items
+				for (var i = 0; i < array_length(abilities); i++) {
+					var ability = grid.add_element(new AbilityButton(abilities[i]))
+						.set_minimum_size(0, 40)
+						.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+				}
 			}
+	}
+	#endregion
+	// =============================================
+	#region Footer
+	{
+		var panel = list.add_panel_container(grogdemo_panel_fancy);
+		panel.set_minimum_size(0, 90);
+		panel.set_expand_flags(GROG_EXPAND_FILL_X);
+		
+		// Buttons
+		var button_list = panel.add_list_container(GROG_HORIZONTAL);
+		button_list.set_expand_flags(GROG_EXPAND_X | GROG_EXPAND_FILL_Y);
+		{
+			// Use
+			button_list.add_button("Use", grogdemo_panel_button)
+				.set_minimum_size(190, 0)
+				.set_expand_flags(GROG_EXPAND_FILL_Y);
+			
+			// Equip
+			button_list.add_button("Equip", grogdemo_panel_button)
+				.set_minimum_size(190, 0)
+				.set_expand_flags(GROG_EXPAND_FILL_Y);
 		}
 	}
-	{
-		// Footer
-		var panel = list.add_panel_container(grogdemo_panel_fancy);
-		panel.min_height = 90;
-		panel.expand = GROG_EXPAND_FILL_X;
-	}
+	#endregion
+	// =============================================
+	
 }
 
 #endregion

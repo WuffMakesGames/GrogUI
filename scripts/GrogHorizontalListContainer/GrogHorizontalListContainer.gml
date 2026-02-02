@@ -1,6 +1,4 @@
-function GrogHorizontalListContainer() : GrogContainer() constructor {
-	item_padding = 4;
-	
+function GrogHorizontalListContainer() : __GrogListContainer() constructor {
 	update_children = function() {
 		var _count = array_length(children);
 		
