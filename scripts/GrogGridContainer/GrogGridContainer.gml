@@ -13,6 +13,11 @@ function GrogGridContainer(_columns) : GrogContainer() constructor {
 			_child.update_size(width, height);
 			_child.update_position(x, y, width, height);
 			_child.update();
+			
+			// End of row
+			if (i % columns == columns-1) {
+				
+			}
 		}
 	}
 }

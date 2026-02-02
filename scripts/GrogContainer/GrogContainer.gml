@@ -13,7 +13,9 @@ function GrogContainer() : GrogElement() constructor {
 	}
 	render_children = function() {
 		for (var i = 0; i < array_length(children); i++) {
-			children[i].render();
+			var _child = children[i];
+			_child.render();
+			_child.debug_render();
 		}
 	}
 	
@@ -21,12 +23,7 @@ function GrogContainer() : GrogElement() constructor {
 	update = function() { update_children(); }
 	render = function() {
 		render_children();
-		if (GROG_DEBUG) {
-			draw_set_color(c_red);
-			draw_rectangle(x+1, y+1, x+width-1, y+height-1, true);
-			draw_text(x+width-string_width(instanceof(self)), y+height-string_height(instanceof(self)), instanceof(self));
-			draw_set_color(c_white);
-		}
+		debug_render();
 	}
 	
 	// =============================================
@@ -122,8 +119,8 @@ function GrogContainer() : GrogElement() constructor {
 	
 	/// Adds a text element.
 	/// @arg {string} text
-	static add_label = function(_text) {
-		return add_element(new GrogLabel(_text))
+	static add_label = function(_text, _font=-1) {
+		return add_element(new GrogLabel(_text, _font))
 	}
 	
 	#endregion

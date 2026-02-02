@@ -15,6 +15,21 @@ function GrogElement() constructor {
 	// Overrides
 	update = function() {}
 	render = function() {}
+	pre_update_size = function() {}
+	
+	debug_render = function() {
+		if (GROG_DEBUG_BOUNDS) {
+			draw_set_font(grogui_debug_font);
+			draw_set_color(c_red);
+			draw_rectangle(x+1, y+1, x+width-1, y+height-1, true);
+			draw_set_color(c_white);
+		}
+		
+		if (GROG_DEBUG_TEXT) {
+			var _inst = instanceof(self);
+			draw_text(x+width-string_width(_inst), y+height-string_height(_inst), _inst);
+		}
+	}
 	
 	// =============================================
 	#region Methods
@@ -26,6 +41,8 @@ function GrogElement() constructor {
 	
 	/// Updates the size of the element according to its flags and the max area it can occupy.
 	update_size = function(_width=display_get_gui_width(), _height=display_get_gui_height()) {
+		pre_update_size();
+		
 		width = min_width;
 		height = min_height;
 		if (expand & GROG_EXPAND_FILL_X) width = max(min_width, _width);

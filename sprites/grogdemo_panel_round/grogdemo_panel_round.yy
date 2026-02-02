@@ -29,7 +29,7 @@
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
     "highlightStyle":0,
-    "left":11,
+    "left":19,
     "resourceType":"GMNineSliceData",
     "resourceVersion":"2.0",
     "right":11,
@@ -40,7 +40,7 @@
       0,
       0,
     ],
-    "top":11,
+    "top":20,
   },
   "origin":0,
   "parent":{

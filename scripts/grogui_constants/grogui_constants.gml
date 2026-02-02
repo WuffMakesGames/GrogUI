@@ -1,6 +1,7 @@
 
 // Enables drawing container bounds
-#macro GROG_DEBUG true
+#macro GROG_DEBUG_BOUNDS 1
+#macro GROG_DEBUG_TEXT 0
 
 // List sort directions
 #macro GROG_VERTICAL 0

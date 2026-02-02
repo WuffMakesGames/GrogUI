@@ -21,7 +21,7 @@ AbilityButton = function(ability) : GrogButton() constructor {
 // Add abilities
 var _names = array_shuffle(["Meep", "Moop", "Glorp", "Jeep!", "Wubba Wubba", "Fatal Oompa", "Apple Fritter Pawnch", "2", "3", "Oompa", "Leempor", "Gruggy!", "Ook Ook"]);
 for (var i = 0; i < array_length(_names); i++) {
-	array_push(abilities, new Ability())
+	array_push(abilities, new Ability(_names[i]));
 }
 
 #endregion
@@ -41,6 +41,9 @@ open_ability_menu = function() {
 		body.expand = GROG_EXPAND_X | GROG_EXPAND_FILL_Y;
 		body.item_padding = 10;
 		
+		// Spacing
+		body.add_spacing(0, 10);
+		
 		// Header
 		var header = body.add_container();
 		header.min_height = 75;
@@ -50,7 +53,7 @@ open_ability_menu = function() {
 			panel.min_width = 300;
 			panel.expand = GROG_EXPAND_FILL_Y;
 			
-			var label = panel.add_label("Ability");
+			var label = panel.add_label("Ability", grogdemo_font_large);
 			label.expand = GROG_EXPAND_BOTH;
 		}
 		

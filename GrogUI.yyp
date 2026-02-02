@@ -25,6 +25,9 @@
   },
   "name":"GrogUI",
   "resources":[
+    {"id":{"name":"grogdemo_font_large","path":"fonts/grogdemo_font_large/grogdemo_font_large.yy",},},
+    {"id":{"name":"grogdemo_font_small","path":"fonts/grogdemo_font_small/grogdemo_font_small.yy",},},
+    {"id":{"name":"grogui_debug_font","path":"fonts/grogui_debug_font/grogui_debug_font.yy",},},
     {"id":{"name":"obj_grog_ui","path":"objects/obj_grog_ui/obj_grog_ui.yy",},},
     {"id":{"name":"rm_grog_ui","path":"rooms/rm_grog_ui/rm_grog_ui.yy",},},
     {"id":{"name":"GrogButton","path":"scripts/GrogButton/GrogButton.yy",},},
