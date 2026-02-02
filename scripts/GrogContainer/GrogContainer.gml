@@ -1,16 +1,31 @@
 function GrogContainer() : GrogElement() constructor {
 	children = [];
+	
+	// TODO: Implement anchor points
+	
+	// Variables
+	margins = {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 0,
+	}
+	
+	// Flags
 	trim_contents = false;
 	
-	// Overrides
+	// =============================================
+	#region Overrides
+	
 	update_children = function() {
 		for (var i = 0; i < array_length(children); i++) {
 			var _child = children[i];
-			_child.update_size(width, height);
-			_child.update_position(x, y, width, height);
+			_child.update_size(get_content_available_width(), get_content_available_height());
+			_child.update_position(x+margins.left, y+margins.top, get_content_available_width(), get_content_available_height());
 			_child.update();
 		}
 	}
+	
 	render_children = function() {
 		for (var i = 0; i < array_length(children); i++) {
 			var _child = children[i];
@@ -20,12 +35,16 @@ function GrogContainer() : GrogElement() constructor {
 	}
 	
 	// Override
-	update = function() { update_children(); }
+	update = function() {
+		update_children();
+	}
+	
 	render = function() {
 		render_children();
 		debug_render();
 	}
 	
+	#endregion
 	// =============================================
 	#region Methods
 	
@@ -114,9 +133,10 @@ function GrogContainer() : GrogElement() constructor {
 	}
 	
 	/// Adds a clickable button.
+	/// The sprite can have 3 frames. (Normal, Hover, Pressed)
 	/// @return {Struct.GrogButton}
-	static add_button = function(_text, _sprite, _font=-1) {
-		return add_element(new GrogButton(_text, _sprite, _font))
+	static add_button = function(_text, _sprite) {
+		return add_element(new GrogButton(_text, _sprite))
 	}
 	
 	/// Adds a text element.
@@ -128,5 +148,34 @@ function GrogContainer() : GrogElement() constructor {
 	
 	#endregion
 	// =============================================
+	#region Getters/Setters
 	
+	/// Sets the margins for content inside of a container.
+	/// @arg {real} left	Offset from the left of the container.
+	/// @arg {real} top		Offset from the top of the container.
+	/// @arg {real} right	Offset from the right of the container.
+	/// @arg {real} bottom	Offset from the bottom of the container.
+	/// @return {Struct.GrogContainer}
+	static set_margins = function(_left, _top, _right, _bottom) {
+		margins.left = _left;
+		margins.top = _top;
+		margins.right = _right;
+		margins.bottom = _bottom;
+		return self;
+	}
+	
+	/// Returns the available width for content accounting for margins.
+	/// @return {real}
+	static get_content_available_width = function() {
+		return width - (margins.left+margins.right);
+	}
+	
+	/// Returns the available width for content accounting for margins.
+	/// @return {real}
+	static get_content_available_height = function() {
+		return height - (margins.top+margins.bottom);
+	}
+	
+	#endregion
+	// =============================================
 }

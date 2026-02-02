@@ -10,8 +10,8 @@ function GrogGridContainer(_columns) : GrogContainer() constructor {
 		
 		for (var i = 0; i < array_length(children); i++) {
 			var _child = children[i];
-			_child.update_size(width, height);
-			_child.update_position(x, y, width, height);
+			_child.update_size(get_content_available_width(), get_content_available_height());
+			_child.update_position(x+margins.left, y+margins.top, get_content_available_width(), get_content_available_height());
 			_child.update();
 			
 			// End of row

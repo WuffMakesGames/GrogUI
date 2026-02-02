@@ -33,15 +33,15 @@ open_ability_menu = function() {
 	
 	// Main list
 	var list = root.add_list_container(GROG_VERTICAL);
-	list.expand = GROG_EXPAND_FILL_BOTH;
-	list.item_padding = 10;
+	list.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+	list.set_item_padding(10);
 	
 	// =============================================
 	#region Main Body
 	{
 		var body = list.add_list_container(GROG_VERTICAL);
 		body.set_minimum_size(1050, 0);
-		body.set_expand_flags(GROG_EXPAND_X : GROG_EXPAND_FILL_Y);
+		body.set_expand_flags(GROG_EXPAND_X | GROG_EXPAND_FILL_Y);
 		body.set_item_padding(10);
 		
 		// Spacing
@@ -68,10 +68,11 @@ open_ability_menu = function() {
 		{
 			// Player
 			var panel = subheader.add_panel_container(grogdemo_panel_fancy)
-				.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+			panel.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+			panel.set_margins(0, 8, 0, 0);
 			
-			var panel_list = panel.add_list_container(GROG_HORIZONTAL)
-				.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+			var panel_list = panel.add_list_container(GROG_HORIZONTAL);
+			panel_list.set_expand_flags(GROG_EXPAND_FILL_BOTH);
 			panel_list.add_spacing(38, 0);
 			
 			var portrait = panel_list.add_panel_container(grogdemo_portrait)
@@ -81,24 +82,25 @@ open_ability_menu = function() {
 		{
 			// Info
 			var panel = subheader.add_panel_container(grogdemo_panel_round);
-			panel.min_width = 320;
-			panel.expand = GROG_EXPAND_FILL_Y;
+			panel.set_minimum_size(320, 0);
+			panel.set_expand_flags(GROG_EXPAND_FILL_Y);
 		}
 		
 		// Abilities
-		var ability_container = body.add_scroll_container()
-			.set_expand_flags(GROG_EXPAND_FILL_BOTH);
-			{
-				var grid = ability_container.add_grid_container(2)
-					.set_expand_flags(GROG_EXPAND_FILL_BOTH);
-				
-				// Grid items
-				for (var i = 0; i < array_length(abilities); i++) {
-					var ability = grid.add_element(new AbilityButton(abilities[i]))
-						.set_minimum_size(0, 40)
-						.set_expand_flags(GROG_EXPAND_FILL_BOTH);
-				}
+		var ability_container = body.add_scroll_container();
+		ability_container.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+		{
+			var grid = ability_container.add_grid_container(2);
+			grid.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+			
+			// Grid items
+			for (var i = 0; i < array_length(abilities); i++) {
+				var ability = grid.add_element(new AbilityButton(abilities[i]))
+					.set_minimum_size(0, 40)
+					.set_expand_flags(GROG_EXPAND_FILL_BOTH)
+					.set_font(grogdemo_font_small);
 			}
+		}
 	}
 	#endregion
 	// =============================================
@@ -111,6 +113,8 @@ open_ability_menu = function() {
 		// Buttons
 		var button_list = panel.add_list_container(GROG_HORIZONTAL);
 		button_list.set_expand_flags(GROG_EXPAND_X | GROG_EXPAND_FILL_Y);
+		button_list.set_item_padding(0);
+		button_list.set_margins(0, 10, 0, 0);
 		{
 			// Use
 			button_list.add_button("Use", grogdemo_panel_button)

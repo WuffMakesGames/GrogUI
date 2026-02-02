@@ -1,11 +1,17 @@
 
 // Enables drawing container bounds
-#macro GROG_DEBUG_BOUNDS 1
-#macro GROG_DEBUG_TEXT 0
+#macro GROG_DEBUG_BOUNDS true
+#macro GROG_DEBUG_TEXT false
 
-// List sort directions
+// Directions flags
 #macro GROG_VERTICAL 0
 #macro GROG_HORIZONTAL 1
+
+// Sort orders
+// i.e Left to Right/Top to Bottom
+#macro GROG_SORT_BEGINING 0 // Left to right
+#macro GROG_SORT_CENTER 1	// Left to right (But centered)
+#macro GROG_SORT_END 2		// Right to left
 
 // Doesn't expand at all
 #macro GROG_EXPAND_NONE 0

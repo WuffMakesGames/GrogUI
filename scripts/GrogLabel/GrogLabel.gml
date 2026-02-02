@@ -1,6 +1,5 @@
-function GrogLabel(_text, _font) : GrogElement() constructor {
+function GrogLabel(_text) : GrogElement() constructor {
 	text = _text;
-	font = _font;
 	
 	pre_update_size = function() {
 		if (font_exists(font)) draw_set_font(font);
@@ -9,7 +8,7 @@ function GrogLabel(_text, _font) : GrogElement() constructor {
 	}
 	
 	render = function() {
-		if (font_exists(font)) draw_set_font(font);
+		push_font();
 		draw_text(x, y, text);
 	}
 }

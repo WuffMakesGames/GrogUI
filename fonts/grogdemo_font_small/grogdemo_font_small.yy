@@ -208,8 +208,8 @@
   "maintainGms1Font":false,
   "name":"grogdemo_font_small",
   "parent":{
-    "name":"DemoGrogUI",
-    "path":"folders/DemoGrogUI.yy",
+    "name":"Fonts",
+    "path":"folders/DemoGrogUI/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

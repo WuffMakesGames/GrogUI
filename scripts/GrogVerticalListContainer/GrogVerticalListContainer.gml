@@ -2,7 +2,7 @@ function GrogVerticalListContainer() : __GrogListContainer() constructor {
 	update_children = function() {
 		var _count = array_length(children);
 		
-		var _offset = y;
+		var _offset = y+margins.top;
 		var _total_size = (_count-1) * item_padding;
 		var _total_dynamic = 0;
 		
@@ -16,7 +16,7 @@ function GrogVerticalListContainer() : __GrogListContainer() constructor {
 				
 			// Fixed size
 			} else {
-				_child.update_size(width, height);
+				_child.update_size(get_content_available_width(), get_content_available_height());
 				_total_size += _child.height;
 			}
 		}
@@ -27,13 +27,13 @@ function GrogVerticalListContainer() : __GrogListContainer() constructor {
 			
 			// Dynamic size
 			if (_child.expand & GROG_EXPAND_Y || _child.expand & GROG_EXPAND_FILL_Y) {
-				var _height = (height - _total_size) / _total_dynamic;
-				_child.update_size(width, _height);
-				_child.update_position(x, _offset, width, _height);
+				var _avail = (get_content_available_height() - _total_size) / _total_dynamic;
+				_child.update_size(get_content_available_width(), _avail);
+				_child.update_position(x+margins.left, _offset, get_content_available_width(), _avail);
 			
 			// Fixed size
 			} else {
-				_child.update_position(x, _offset, width, height);
+				_child.update_position(x+margins.left, _offset, get_content_available_width(), get_content_available_height());
 				
 			}
 			

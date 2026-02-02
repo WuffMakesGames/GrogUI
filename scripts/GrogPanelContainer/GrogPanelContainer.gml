@@ -1,8 +1,11 @@
 function GrogPanelContainer(_sprite) : GrogContainer() constructor {
-	sprite_index = _sprite;
 	
+	// Variables
+	sprite = _sprite;
+	
+	// Override
 	render = function() {
-		draw_sprite_stretched(sprite_index, 0, x, y, width, height);
+		if (sprite_exists(sprite)) draw_sprite_stretched(sprite, 0, x, y, width, height);
 		
 		// Children
 		render_children();

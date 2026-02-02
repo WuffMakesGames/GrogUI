@@ -15,14 +15,15 @@ function GrogElement() constructor {
 	min_height = 0;
 	expand = GROG_EXPAND_NONE;
 	
-	// Overrides
-	update = function() {}
-	render = function() {}
+	// =============================================
+	#region Overrides
+	
 	pre_update_size = function() {}
+	update = function() {}
+	render = function() {}	
 	
 	debug_render = function() {
 		if (GROG_DEBUG_BOUNDS) {
-			draw_set_font(__grogui_debug_font);
 			draw_set_color(c_red);
 			draw_rectangle(x+1, y+1, x+width-1, y+height-1, true);
 			draw_set_color(c_white);
@@ -30,16 +31,26 @@ function GrogElement() constructor {
 		
 		if (GROG_DEBUG_TEXT) {
 			var _inst = instanceof(self);
+			draw_set_font(__grogui_debug_font);
 			draw_text(x+width-string_width(_inst), y+height-string_height(_inst), _inst);
 		}
 	}
 	
+	#endregion
 	// =============================================
 	#region Methods
 	
 	/// Removes this element from its parent, if it has one.
 	static free = function() {
 		parent.remove_element(self);
+	}
+	
+	/// Pushes the elements font, or the GrogUI default font if none is set.
+	static push_font = function() {
+		if (font_exists(font)) draw_set_font(font);
+		else if (font_exists(GrogUI.get_default_font())) {
+			draw_set_font(GrogUI.get_default_font());
+		}
 	}
 	
 	/// Updates the size of the element according to its flags and the max area it can occupy.
@@ -89,4 +100,5 @@ function GrogElement() constructor {
 	
 	#endregion
 	// =============================================
+
 }

@@ -29,7 +29,7 @@ function GrogUI() constructor {
 	}
 	
 	static render = function() {
-		if (font_exists(GrogUI.default_font)) draw_set_font(GrogUI.default_font)
+		if (font_exists(GrogUI.default_font)) draw_set_font(GrogUI.default_font);
 		root.render();
 	}
 	
@@ -53,7 +53,6 @@ function GrogUI() constructor {
 	/// @arg {Asset.GMFont} font
 	static set_default_font = function(_font) {
 		GrogUI.default_font = _font;
-		return GrogUI;
 	}
 	
 	/// @return {Asset.GMFont,undefined}

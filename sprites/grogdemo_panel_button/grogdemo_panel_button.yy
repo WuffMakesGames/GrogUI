@@ -21,7 +21,7 @@
   "height":58,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"dad03b8e-f3ee-4cd9-b75e-a4949f0661c2","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"dad03b8e-f3ee-4cd9-b75e-a4949f0661c2","opacity":12.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"dad03b8e-f3ee-4cd9-b75e-a4949f0661c2","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"dad03b8e-f3ee-4cd9-b75e-a4949f0661c2","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"fcc85def-f0fc-4888-9838-f28cb3fac6af","blendMode":0,"displayName":"default","isLocked":false,"name":"fcc85def-f0fc-4888-9838-f28cb3fac6af","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"grogdemo_panel_button",
