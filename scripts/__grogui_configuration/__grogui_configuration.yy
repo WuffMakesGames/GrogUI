@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__grogui_configuration",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__grogui_configuration",
+  "parent":{
+    "name":"GrogUI",
+    "path":"folders/GrogUI.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

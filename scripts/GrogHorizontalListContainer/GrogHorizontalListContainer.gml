@@ -16,7 +16,7 @@ function GrogHorizontalListContainer() : __GrogListContainer() constructor {
 				
 			// Fixed size
 			} else {
-				_child.update_size(get_content_available_width(), get_content_available_height());
+				_child.update_size(get_avail_width(), get_avail_height());
 				_total_size += _child.width;
 			}
 		}
@@ -27,13 +27,13 @@ function GrogHorizontalListContainer() : __GrogListContainer() constructor {
 			
 			// Dynamic size
 			if (_child.expand & GROG_EXPAND_X || _child.expand & GROG_EXPAND_FILL_X) {
-				var _avail = (get_content_available_width() - _total_size) / _total_dynamic;
-				_child.update_size(_avail, get_content_available_height());
-				_child.update_position(_offset, y+margins.top, _avail, get_content_available_height());
+				var _avail = (get_avail_width() - _total_size) / _total_dynamic;
+				_child.update_size(_avail, get_avail_height());
+				_child.update_position(_offset, y+margins.top, _avail, get_avail_height());
 			
 			// Fixed size
 			} else {
-				_child.update_position(_offset, y+margins.top, get_content_available_width(), get_content_available_height());
+				_child.update_position(_offset, y+margins.top, get_avail_width(), get_avail_height());
 				
 			}
 			

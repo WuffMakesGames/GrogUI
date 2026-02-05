@@ -1,30 +1,14 @@
 /// @description 
 
 // Variables
-abilities = array_create(0);
+abilities = [];
 root = GrogUI.root;
 
-// ==============================================
-#region Abilities
-Ability = function(_name) constructor {
-	name = _name;
-	cost = random_range(0, 20);
-	active = choose(true, false);
-}
-
-AbilityButton = function(ability) : GrogButton() constructor {
-	min_height = 64;
-	on_click = function() {
-	}
-}
-
-// Add abilities
 var _names = array_shuffle(["Meep", "Moop", "Glorp", "Jeep!", "Wubba Wubba", "Fatal Oompa", "Apple Fritter Pawnch", "2", "3", "Oompa", "Leempor", "Gruggy!", "Ook Ook"]);
 for (var i = 0; i < array_length(_names); i++) {
-	array_push(abilities, new Ability(_names[i]));
+	array_push(abilities, new GrogDemoAbility(_names[i]));
 }
 
-#endregion
 // ==============================================
 #region Menus
 open_ability_menu = function() {
@@ -87,7 +71,11 @@ open_ability_menu = function() {
 		}
 		
 		// Abilities
-		var ability_container = body.add_scroll_container();
+		var ability_panel = body.add_panel_container(grogdemo_panel_fancy);
+		ability_panel.set_expand_flags(GROG_EXPAND_FILL_BOTH);
+		ability_panel.set_margins(2, 7, 2, 0);
+		
+		var ability_container = ability_panel.add_scroll_container();
 		ability_container.set_expand_flags(GROG_EXPAND_FILL_BOTH);
 		{
 			var grid = ability_container.add_grid_container(2);
@@ -95,8 +83,8 @@ open_ability_menu = function() {
 			
 			// Grid items
 			for (var i = 0; i < array_length(abilities); i++) {
-				var ability = grid.add_element(new AbilityButton(abilities[i]))
-					.set_minimum_size(0, 40)
+				var ability = grid.add_element(new GrogDemoAbilityButton(abilities[i]))
+					.set_minimum_size(0, 64)
 					.set_expand_flags(GROG_EXPAND_FILL_BOTH)
 					.set_font(grogdemo_font_small);
 			}

@@ -16,7 +16,7 @@ function GrogVerticalListContainer() : __GrogListContainer() constructor {
 				
 			// Fixed size
 			} else {
-				_child.update_size(get_content_available_width(), get_content_available_height());
+				_child.update_size(get_avail_width(), get_avail_height());
 				_total_size += _child.height;
 			}
 		}
@@ -27,13 +27,13 @@ function GrogVerticalListContainer() : __GrogListContainer() constructor {
 			
 			// Dynamic size
 			if (_child.expand & GROG_EXPAND_Y || _child.expand & GROG_EXPAND_FILL_Y) {
-				var _avail = (get_content_available_height() - _total_size) / _total_dynamic;
-				_child.update_size(get_content_available_width(), _avail);
-				_child.update_position(x+margins.left, _offset, get_content_available_width(), _avail);
+				var _avail = (get_avail_height() - _total_size) / _total_dynamic;
+				_child.update_size(get_avail_width(), _avail);
+				_child.update_position(x+margins.left, _offset, get_avail_width(), _avail);
 			
 			// Fixed size
 			} else {
-				_child.update_position(x+margins.left, _offset, get_content_available_width(), get_content_available_height());
+				_child.update_position(x+margins.left, _offset, get_avail_width(), get_avail_height());
 				
 			}
 			

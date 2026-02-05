@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GrogDemoAbility",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GrogDemoAbility",
+  "parent":{
+    "name":"DemoGrogUI",
+    "path":"folders/DemoGrogUI.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

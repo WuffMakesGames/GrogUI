@@ -1,7 +1,12 @@
 
-// Enables drawing container bounds
-#macro GROG_DEBUG_BOUNDS true
-#macro GROG_DEBUG_TEXT false
+// Sprite stretch flags
+#macro GROG_STRETCH_IGNORE 0 // Retain it's original size, regardless of the element size
+#macro GROG_STRETCH_CENTER 1 // Center the image in the element
+
+#macro GROG_STRETCH_FILL 10 // Stretch the image to fill the element
+
+#macro GROG_STRETCH_FIT_HORIZONTAL 20 // 
+#macro GROG_STRETCH_FIT_VERTICAL 21
 
 // Directions flags
 #macro GROG_VERTICAL 0

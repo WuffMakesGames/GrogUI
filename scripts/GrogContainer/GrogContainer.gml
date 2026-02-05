@@ -20,8 +20,8 @@ function GrogContainer() : GrogElement() constructor {
 	update_children = function() {
 		for (var i = 0; i < array_length(children); i++) {
 			var _child = children[i];
-			_child.update_size(get_content_available_width(), get_content_available_height());
-			_child.update_position(x+margins.left, y+margins.top, get_content_available_width(), get_content_available_height());
+			_child.update_size(get_avail_width(), get_avail_height());
+			_child.update_position(x+margins.left, y+margins.top, get_avail_width(), get_avail_height());
 			_child.update();
 		}
 	}
@@ -83,7 +83,7 @@ function GrogContainer() : GrogElement() constructor {
 	
 	#endregion
 	// =============================================
-	#region Elements - Containers
+	#region Add Containers
 	
 	/// Adds an empty container.
 	/// @return {struct.GrogContainer}
@@ -124,7 +124,7 @@ function GrogContainer() : GrogElement() constructor {
 	
 	#endregion
 	// =============================================
-	#region Elements - Others
+	#region Add Elements
 	
 	/// Adds an empty element that can be used for spacing.
 	/// @return {Struct.GrogSpacing}
@@ -146,6 +146,13 @@ function GrogContainer() : GrogElement() constructor {
 		return add_element(new GrogLabel(_text))
 	}
 	
+	/// Adds a sprite element.
+	/// @arg {Asset.GMsprite} sprite
+	/// @return {Struct.GrogSprite}
+	static add_sprite = function(_sprite, _subimg=0) {
+		return add_element(new GrogSprite(_sprite, _subimg))
+	}
+	
 	#endregion
 	// =============================================
 	#region Getters/Setters
@@ -164,18 +171,37 @@ function GrogContainer() : GrogElement() constructor {
 		return self;
 	}
 	
-	/// Returns the available width for content accounting for margins.
-	/// @return {real}
-	static get_content_available_width = function() {
-		return width - (margins.left+margins.right);
-	}
+	// AVAILABLE AREA
+	// =============================================
 	
 	/// Returns the available width for content accounting for margins.
 	/// @return {real}
-	static get_content_available_height = function() {
-		return height - (margins.top+margins.bottom);
-	}
+	static get_avail_width = function() { return width - (margins.left+margins.right); }
+	
+	/// Returns the available width for content accounting for margins.
+	/// @return {real}
+	static get_avail_height = function() { return height - (margins.top+margins.bottom); }
+	
+	// CONTENT AREA
+	// =============================================
+	
+	/// Returns the left of the available area for content.
+	/// @return {real}
+	static get_content_left = function() { return x + margins.left; }
+
+	/// Returns the top of the available area for content.
+	/// @return {real}
+	static get_content_top = function() { return y + margins.top; }
+
+	/// Returns the right of the available area for content.
+	/// @return {real}
+	static get_content_right = function() { return get_content_left() + get_avail_width(); }
+
+	/// Returns the bottom of the available area for content.
+	/// @return {real}
+	static get_content_bottom = function() { return get_content_top() + get_avail_height(); }
 	
 	#endregion
 	// =============================================
+	
 }

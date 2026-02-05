@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GrogSprite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GrogSprite",
+  "parent":{
+    "name":"Elements",
+    "path":"folders/GrogUI/Elements.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
