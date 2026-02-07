@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"docsHomePage",
+  "name":"docsHomePage",
+  "parent":{
+    "name":"DocsGrogUI",
+    "path":"folders/DocsGrogUI.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

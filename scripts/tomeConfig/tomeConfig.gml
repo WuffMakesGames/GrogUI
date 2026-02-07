@@ -2,7 +2,7 @@
 #macro TOME_ENABLED true
 
 // Where your docs will be placed
-#macro TOME_LOCAL_REPO_PATH "D:/Projects/GameMakerStudio2/GrogUI/datafiles/Docs/"
+#macro TOME_LOCAL_REPO_PATH "D:/Projects/GameMakerStudio2/GrogUI/docs"
 
 // Show extended debug information in the console when generating your docs
 #macro TOME_VERBOSE true

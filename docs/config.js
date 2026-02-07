@@ -1,8 +1,8 @@
 const config = {
     latestVersion:"v1.0a",
-  otherVersions:null,
+  otherVersions:[],
   name:"GrogUI",
   description:"Grog Approved",
   favicon:"assets/docsIcon.png",
-  themeColor:"#b742eb",
+  themeColor:"#B742EB",
 };
