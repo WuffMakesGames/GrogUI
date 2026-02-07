@@ -1,5 +1,7 @@
 /// @description 
 
+randomize();
+
 // Variables
 abilities = [];
 root = GrogUI.root;
