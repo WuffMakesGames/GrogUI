@@ -1,7 +1,5 @@
 
-#macro __GROG_UI_TITLE "GrogUI"
-#macro __GROG_UI_VERSION "v1.0a"
-#macro __GROG_UI_DEBUG_TITLE ($"{__GROG_UI_TITLE} ({__GROG_UI_VERSION})")
+#macro GROG_UI_VERSION "v1.0a"
 
 // Sprite stretch flags
 #macro GROG_STRETCH_IGNORE 0 // Retain it's original size, regardless of the element size
